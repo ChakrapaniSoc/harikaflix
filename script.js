@@ -130,7 +130,7 @@ function openLetter() {
   letterModal.classList.add('active');
   letterModal.setAttribute('aria-hidden', 'false');
   setBodyScrollLock(true);
-  createFloatingHearts();
+  createLetterCelebration();
 }
 
 function closeLetter() {
@@ -142,55 +142,122 @@ function closeLetter() {
   setBodyScrollLock(lightbox.classList.contains('active'));
 }
 
-function createFloatingHearts() {
+function createLetterCelebration() {
   heartLayer.replaceChildren();
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  const particleCount = 16;
-  const particleTypes = [
-    { className: 'spark butterfly', emoji: '🦋' },
-    { className: 'spark heart', emoji: '❤️' },
-    { className: 'spark butterfly', emoji: '🦋' },
-    { className: 'spark heart', emoji: '💗' },
-    { className: 'spark butterfly', emoji: '🦋' },
-    { className: 'spark heart', emoji: '💕' },
-    { className: 'spark butterfly', emoji: '🦋' },
-    { className: 'spark heart', emoji: '💖' },
-    { className: 'spark butterfly', emoji: '🦋' },
-    { className: 'spark heart', emoji: '❤️' },
-    { className: 'spark butterfly', emoji: '🦋' },
-    { className: 'spark heart', emoji: '💗' },
-    { className: 'spark butterfly', emoji: '🦋' },
-    { className: 'spark heart', emoji: '💕' },
-    { className: 'spark butterfly', emoji: '🦋' },
-    { className: 'spark heart', emoji: '💖' },
-  ];
+  const butterflyHues = [325, 275, 205, 38, 18, 145];
+  const heartEmojis = ['❤️', '💗', '💕', '💖', '💘', '💝'];
+  const particleCount = 36;
+  const letterFrame = document.querySelector('.letter-modal-inner').getBoundingClientRect();
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
+  const safeMargin = Math.min(52, Math.max(8, Math.min(viewportWidth, viewportHeight) * 0.035));
+  const zones = [
+    { side: 'top', span: letterFrame.top - safeMargin, weight: viewportWidth * (letterFrame.top - safeMargin) },
+    { side: 'bottom', span: viewportHeight - letterFrame.bottom - safeMargin, weight: viewportWidth * (viewportHeight - letterFrame.bottom - safeMargin) },
+    { side: 'left', span: letterFrame.left - safeMargin, weight: letterFrame.height * (letterFrame.left - safeMargin) },
+    { side: 'right', span: viewportWidth - letterFrame.right - safeMargin, weight: letterFrame.height * (viewportWidth - letterFrame.right - safeMargin) },
+  ].filter((zone) => zone.span > 6 && zone.weight > 0);
+  if (zones.length === 0) {
+    zones.push({ side: 'top', span: viewportHeight, weight: viewportWidth * viewportHeight });
+  }
+  const totalZoneWeight = zones.reduce((total, zone) => total + zone.weight, 0);
 
   for (let i = 0; i < particleCount; i += 1) {
+    const isButterfly = i < particleCount / 2;
     const particle = document.createElement('span');
-    const particleType = particleTypes[i];
-    particle.className = particleType.className;
-    particle.textContent = particleType.emoji;
-    particle.style.setProperty('--start-x', `${(Math.random() * 100).toFixed(2)}%`);
-    particle.style.setProperty('--start-y', `${(12 + Math.random() * 95).toFixed(2)}%`);
-    particle.style.setProperty('--drift-x', `${(Math.random() * 180 - 90).toFixed(2)}px`);
-    particle.style.setProperty('--rise-y', `-${(55 + Math.random() * 40).toFixed(2)}vh`);
-    particle.style.setProperty('--rise-end', `-${(120 + Math.random() * 70).toFixed(2)}vh`);
-    const durationSeconds = 5 + Math.random() * 4;
-    const delaySeconds = Math.random() * 0.9;
+    const glyph = document.createElement('span');
+    let zoneTarget = Math.random() * totalZoneWeight;
+    const zone = zones.find((candidate) => {
+      zoneTarget -= candidate.weight;
+      return zoneTarget <= 0;
+    }) || zones[zones.length - 1];
+    const durationSeconds = 4.4 + Math.random() * 0.9;
+    const delaySeconds = Math.random() * 0.35;
+
+    particle.className = isButterfly
+      ? `spark butterfly${Math.random() < 0.45 ? ' butterfly-glide' : ''}`
+      : 'spark heart';
+    glyph.className = 'spark-glyph';
+    glyph.textContent = isButterfly
+      ? '🦋'
+      : heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+    particle.appendChild(glyph);
+
+    let startX;
+    let startY;
+    let driftX;
+    let riseY;
+    let riseMidY;
+    let riseEnd;
+
+    if (zone.side === 'top') {
+      startX = 12 + Math.random() * Math.max(1, viewportWidth - 24);
+      startY = 4 + Math.random() * Math.max(1, zone.span - 8);
+      const riseDistance = Math.max(0, Math.min(startY - 6, 90)) * (0.65 + Math.random() * 0.35);
+      driftX = Math.random() * 220 - 110;
+      riseY = -riseDistance * 0.45;
+      riseMidY = -riseDistance * 0.72;
+      riseEnd = -riseDistance;
+    } else if (zone.side === 'bottom') {
+      const safeTop = letterFrame.bottom + safeMargin;
+      startX = 12 + Math.random() * Math.max(1, viewportWidth - 24);
+      startY = safeTop + 4 + Math.random() * Math.max(1, zone.span - 8);
+      const riseDistance = Math.max(0, Math.min(startY - safeTop - 8, 90)) * (0.65 + Math.random() * 0.35);
+      driftX = Math.random() * 220 - 110;
+      riseY = -riseDistance * 0.45;
+      riseMidY = -riseDistance * 0.72;
+      riseEnd = -riseDistance;
+    } else {
+      const isLeft = zone.side === 'left';
+      startX = isLeft
+        ? 4 + Math.random() * Math.max(1, zone.span - 8)
+        : letterFrame.right + safeMargin + 4 + Math.random() * Math.max(1, zone.span - 8);
+      startY = letterFrame.top + 18 + Math.random() * Math.max(1, letterFrame.height - 36);
+      driftX = (isLeft ? -1 : 1) * (24 + Math.random() * Math.min(90, zone.span));
+      const verticalDrift = Math.random() * 40 - 20;
+      riseY = verticalDrift;
+      riseMidY = verticalDrift * 1.4;
+      riseEnd = verticalDrift * 1.8;
+    }
+
+    particle.style.setProperty('--start-x', `${startX.toFixed(2)}px`);
+    particle.style.setProperty('--start-y', `${startY.toFixed(2)}px`);
+    particle.style.setProperty('--drift-x', `${driftX.toFixed(2)}px`);
+    particle.style.setProperty('--drift-mid-x', `${(driftX * -0.35).toFixed(2)}px`);
+    particle.style.setProperty('--drift-reverse-x', `${(driftX * -0.55).toFixed(2)}px`);
+    particle.style.setProperty('--drift-reverse-mid-x', `${(driftX * -0.45).toFixed(2)}px`);
+    particle.style.setProperty('--drift-heart-mid-x', `${(driftX * -0.4).toFixed(2)}px`);
+    particle.style.setProperty('--drift-heart-end-x', `${(driftX * -0.5).toFixed(2)}px`);
+    particle.style.setProperty('--rise-y', `${riseY.toFixed(2)}px`);
+    particle.style.setProperty('--rise-mid-y', `${riseMidY.toFixed(2)}px`);
+    particle.style.setProperty('--rise-end', `${riseEnd.toFixed(2)}px`);
+    particle.style.setProperty('--hue', `${butterflyHues[i % butterflyHues.length]}deg`);
     particle.style.setProperty('--duration', `${durationSeconds.toFixed(2)}s`);
     particle.style.animationDelay = `${delaySeconds.toFixed(2)}s`;
-    particle.style.fontSize = `${(1 + Math.random() * 0.8).toFixed(2)}rem`;
-    const cleanupTimer = window.setTimeout(() => {
-      particleCleanupTimers.delete(cleanupTimer);
-      particle.remove();
-    }, (durationSeconds + delaySeconds + 0.25) * 1000);
-    particleCleanupTimers.add(cleanupTimer);
-    particle.addEventListener('animationend', () => {
+    particle.style.fontSize = `${(1.05 + Math.random() * 1.1).toFixed(2)}rem`;
+
+    if (particle.classList.contains('butterfly-glide')) {
+      particle.style.setProperty('--glide-y', `${(riseY * 0.25).toFixed(2)}px`);
+      particle.style.setProperty('--glide-end-y', `${(riseY * 0.4).toFixed(2)}px`);
+      particle.style.setProperty('--glide-end-x', `${(driftX * -0.45).toFixed(2)}px`);
+    }
+
+    let cleanupTimer;
+    const removeParticle = () => {
       window.clearTimeout(cleanupTimer);
       particleCleanupTimers.delete(cleanupTimer);
       particle.remove();
-    }, { once: true });
+    };
+
+    cleanupTimer = window.setTimeout(() => {
+      removeParticle();
+    }, (durationSeconds + delaySeconds + 0.1) * 1000);
+    particleCleanupTimers.add(cleanupTimer);
+    particle.addEventListener('animationend', (event) => {
+      if (event.target === particle) removeParticle();
+    });
     heartLayer.appendChild(particle);
   }
 }

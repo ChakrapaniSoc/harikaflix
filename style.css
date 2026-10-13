@@ -917,24 +917,35 @@ img {
   user-select: none;
   opacity: 0;
   z-index: 1;
-  text-shadow: 0 0 14px rgba(255, 255, 255, 0.2);
+  line-height: 1;
+  text-shadow: 0 0 18px rgba(255, 221, 239, 0.65);
 }
 
 .spark.butterfly {
-  animation: butterflyFloat var(--duration, 8s) ease-in-out forwards;
+  animation: butterflyFloat var(--duration, 5s) ease-in-out forwards;
+}
+
+.spark.butterfly.butterfly-glide {
+  animation-name: butterflyGlide;
 }
 
 .spark.heart {
-  animation: heartFloat var(--duration, 7s) ease-in-out forwards;
+  animation: heartFloat var(--duration, 5s) ease-in-out forwards;
 }
 
-.heart {
-  position: absolute;
-  bottom: -20px;
-  font-size: 1.2rem;
-  color: rgba(229, 9, 20, 0.85);
-  animation: floatUp 8s linear forwards;
-  opacity: 0;
+.spark-glyph {
+  display: block;
+  transform-origin: center;
+}
+
+.spark.butterfly .spark-glyph {
+  filter: hue-rotate(var(--hue, 0deg)) saturate(1.45) drop-shadow(0 0 8px rgba(255, 198, 232, 0.82));
+  animation: butterflyWings 0.46s ease-in-out infinite alternate;
+}
+
+.spark.heart .spark-glyph {
+  filter: drop-shadow(0 0 8px rgba(255, 126, 178, 0.68));
+  animation: heartPulse 1.15s ease-in-out infinite;
 }
 
 .finale {
@@ -1143,36 +1154,82 @@ img {
 @keyframes butterflyFloat {
   0% {
     opacity: 0;
-    transform: translate3d(0, 0, 0) scale(0.75) rotate(0deg);
+    transform: translate3d(0, 0, 0) scale(0.65) rotate(-12deg);
   }
-  12% {
-    opacity: 0.9;
+  15% {
+    opacity: 1;
   }
-  48% {
+  38% {
+    transform: translate3d(var(--drift-mid-x), var(--rise-y), 0) scale(1.06) rotate(12deg);
+  }
+  68% {
     opacity: 0.95;
-    transform: translate3d(var(--drift-x), var(--rise-y), 0) scale(1) rotate(18deg);
+    transform: translate3d(var(--drift-x), var(--rise-mid-y), 0) scale(0.96) rotate(-10deg);
   }
   100% {
     opacity: 0;
-    transform: translate3d(var(--drift-x), var(--rise-end), 0) scale(1.25) rotate(-18deg);
+    transform: translate3d(var(--drift-reverse-x), var(--rise-end), 0) scale(1.22) rotate(18deg);
+  }
+}
+
+@keyframes butterflyGlide {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.7) rotate(-8deg);
+  }
+  15% {
+    opacity: 1;
+  }
+  48% {
+    opacity: 0.96;
+    transform: translate3d(var(--drift-x), var(--glide-y, 0vh), 0) scale(1.08) rotate(10deg);
+  }
+  82% {
+    opacity: 0.9;
+    transform: translate3d(var(--glide-end-x), var(--glide-end-y, 0vh), 0) scale(0.98) rotate(-8deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--drift-x), var(--glide-end-y, 0vh), 0) scale(0.82) rotate(12deg);
   }
 }
 
 @keyframes heartFloat {
   0% {
     opacity: 0;
-    transform: translate3d(0, 0, 0) scale(0.7);
+    transform: translate3d(0, 0, 0) scale(0.55) rotate(-12deg);
   }
-  12% {
+  16% {
+    opacity: 0.96;
+  }
+  42% {
+    transform: translate3d(var(--drift-heart-mid-x), var(--rise-y), 0) scale(1.08) rotate(8deg);
+  }
+  72% {
     opacity: 0.9;
-  }
-  48% {
-    opacity: 0.85;
-    transform: translate3d(var(--drift-x), var(--rise-y), 0) scale(1.05);
+    transform: translate3d(var(--drift-x), var(--rise-mid-y), 0) scale(0.98) rotate(-8deg);
   }
   100% {
     opacity: 0;
-    transform: translate3d(var(--drift-x), var(--rise-end), 0) scale(1.35);
+    transform: translate3d(var(--drift-heart-end-x), var(--rise-end), 0) scale(1.28) rotate(14deg);
+  }
+}
+
+@keyframes butterflyWings {
+  from {
+    transform: scaleX(0.72) rotate(-5deg);
+  }
+  to {
+    transform: scaleX(1.08) rotate(5deg);
+  }
+}
+
+@keyframes heartPulse {
+  0%, 100% {
+    transform: scale(0.94);
+  }
+  50% {
+    transform: scale(1.08);
   }
 }
 
@@ -1182,20 +1239,6 @@ img {
   }
   to {
     opacity: 1;
-  }
-}
-
-@keyframes floatUp {
-  0% {
-    transform: translateY(0) scale(0.8);
-    opacity: 0;
-  }
-  20% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-120vh) scale(1.2) rotate(15deg);
-    opacity: 0;
   }
 }
 
@@ -1327,11 +1370,6 @@ img {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-
-  .letter-modal .spark {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
   }
 
   .fairy-bulb,
