@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000">
+  <defs>
+    <linearGradient id="g2" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#12070c"/>
+      <stop offset="40%" stop-color="#69151d"/>
+      <stop offset="100%" stop-color="#f0b3bc"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#g2)"/>
+  <path d="M120 720c80-180 200-290 320-290 120 0 250 110 330 290v130H120z" fill="#f6dfe4" opacity="0.9"/>
+  <circle cx="285" cy="330" r="110" fill="#fce6eb"/>
+  <circle cx="510" cy="300" r="120" fill="#f6c8d1"/>
+  <text x="400" y="920" text-anchor="middle" font-family="Arial, sans-serif" font-size="52" fill="#fff" letter-spacing="5">MEMORY 2</text>
+</svg>

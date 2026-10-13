@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000">
+  <defs>
+    <linearGradient id="g5" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#12090d"/>
+      <stop offset="45%" stop-color="#861831"/>
+      <stop offset="100%" stop-color="#f5c2ce"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#g5)"/>
+  <circle cx="400" cy="330" r="170" fill="#f7dfe4" opacity="0.95"/>
+  <path d="M180 790c45-160 135-250 220-250 100 0 190 90 220 250v120H180z" fill="#fff1f4" opacity="0.92"/>
+  <text x="400" y="920" text-anchor="middle" font-family="Arial, sans-serif" font-size="52" fill="#fff" letter-spacing="5">MEMORY 5</text>
+</svg>

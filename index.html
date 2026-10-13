@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A cinematic birthday surprise website celebrating childhood friendship."
+    />
+    <title>HARIKAFLIX Birthday Surprise</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <section class="profile-screen active" id="profile-screen" aria-label="Profile selection screen">
+        <div class="profile-overlay"></div>
+        <header class="topbar logo-row">
+          <div class="logo" aria-label="HARIKAFLIX logo">HARIKAFLIX</div>
+        </header>
+
+        <main class="profile-content">
+          <p class="eyebrow">A birthday surprise</p>
+          <h1>Who's watching?</h1>
+
+          <div class="profile-grid" aria-label="Profile selection cards">
+            <button class="profile-card friend-profile" type="button" data-profile="friend" aria-label="Open HARIKA's birthday surprise">
+              <div class="avatar avatar-friend" aria-hidden="true">
+                <img src="assets/photos/her-portrait.jpg" alt="Portrait of the birthday girl" />
+              </div>
+              <div class="profile-info">
+                <span class="profile-name">HARIKA ❤️</span>
+                <span class="profile-status">Birthday Star</span>
+              </div>
+            </button>
+
+            <button class="profile-card" type="button" data-profile="friend-1" aria-label="View a playful message">
+              <div class="avatar avatar-1" aria-hidden="true">
+                <span>👑</span>
+              </div>
+              <div class="profile-info">
+                <span class="profile-name">Queen of Chaos</span>
+                <span class="profile-status">Very dramatic</span>
+              </div>
+            </button>
+
+            <button class="profile-card" type="button" data-profile="friend-2" aria-label="View a playful message">
+              <div class="avatar avatar-2" aria-hidden="true">
+                <span>✨</span>
+              </div>
+              <div class="profile-info">
+                <span class="profile-name">Main Character</span>
+                <span class="profile-status">Always iconic</span>
+              </div>
+            </button>
+
+            <button class="profile-card" type="button" data-profile="friend-3" aria-label="View a playful message">
+              <div class="avatar avatar-3" aria-hidden="true">
+                <span>🎉</span>
+              </div>
+              <div class="profile-info">
+                <span class="profile-name">Bestie Energy</span>
+                <span class="profile-status">Forever laughing</span>
+              </div>
+            </button>
+          </div>
+        </main>
+      </section>
+
+      <div class="app-shell hidden" id="app-shell" aria-live="polite">
+        <header class="site-header">
+          <nav class="navbar container" aria-label="Main navigation">
+            <a href="#home" class="logo" aria-label="HARIKAFLIX home">HARIKAFLIX</a>
+            <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+            <div class="nav-links" id="nav-links">
+              <a href="#home">Home</a>
+              <a href="#memories">Memories</a>
+              <a href="#gallery">Gallery</a>
+              <a href="#letter">Birthday Letter</a>
+              <div class="nav-profile" aria-label="Profile">
+                <i class="fa-solid fa-user"></i>
+              </div>
+            </div>
+          </nav>
+        </header>
+
+        <main id="home">
+          <section class="hero-banner">
+            <div class="hero-overlay"></div>
+            <div class="fairy-lights" aria-hidden="true">
+              <svg class="fairy-wire" viewBox="0 0 1200 150" preserveAspectRatio="none" focusable="false">
+                <path d="M-20 12 C 230 118, 365 98, 590 48 S 930 4, 1220 92" />
+              </svg>
+              <span class="fairy-bulb" style="--x: 4%; --wire-y: 14px; --hang: 31px; --delay: -1.2s"></span>
+              <span class="fairy-bulb" style="--x: 12%; --wire-y: 48px; --hang: 38px; --delay: -3.7s"></span>
+              <span class="fairy-bulb" style="--x: 20%; --wire-y: 78px; --hang: 26px; --delay: -0.8s"></span>
+              <span class="fairy-bulb" style="--x: 29%; --wire-y: 91px; --hang: 40px; --delay: -4.4s"></span>
+              <span class="fairy-bulb" style="--x: 38%; --wire-y: 80px; --hang: 28px; --delay: -2s"></span>
+              <span class="fairy-bulb" style="--x: 47%; --wire-y: 59px; --hang: 39px; --delay: -5.1s"></span>
+              <span class="fairy-bulb" style="--x: 56%; --wire-y: 39px; --hang: 27px; --delay: -1.8s"></span>
+              <span class="fairy-bulb" style="--x: 65%; --wire-y: 23px; --hang: 42px; --delay: -3.2s"></span>
+              <span class="fairy-bulb" style="--x: 74%; --wire-y: 14px; --hang: 29px; --delay: -0.5s"></span>
+              <span class="fairy-bulb" style="--x: 83%; --wire-y: 27px; --hang: 38px; --delay: -4.8s"></span>
+              <span class="fairy-bulb" style="--x: 92%; --wire-y: 52px; --hang: 27px; --delay: -2.7s"></span>
+              <span class="fairy-bulb" style="--x: 99%; --wire-y: 76px; --hang: 36px; --delay: -1.5s"></span>
+            </div>
+            <div class="container hero-content">
+              <p class="hero-label">A LITTLE CELEBRATION OF YOU</p>
+              <h1>From Little Us to Who We Are Today ❤️</h1>
+              <p class="hero-description">
+                From the little girl I knew back in 2006 to the wonderful person you are today—it's been beautiful watching you grow.
+                So many things have changed over the years, but those childhood memories will always be special.
+                Today, this little corner of the internet is just for you.
+                Happy Birthday, Sunshine! ☀️❤️
+              </p>
+              <div class="hero-actions">
+                <button class="primary-btn" type="button" data-scroll-target="#gallery">▶ Start Your Birthday Surprise</button>
+                <button class="secondary-btn" type="button" data-scroll-target="#memories">♡ Our Memories</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="gallery-section section container" id="gallery">
+            <div class="section-heading">
+              <p class="eyebrow">A little gallery</p>
+              <h2>Snapshots of a beautiful friendship</h2>
+            </div>
+
+            <div class="photo-gallery" aria-label="Friendship gallery">
+              <figure class="gallery-card" data-title="The Little Girl from 2006" data-caption="Before we knew how much these little days would mean.">
+                <img src="assets/photos/photo-1.jpg" alt="The Little Girl from 2006" class="gallery-image" data-title="The Little Girl from 2006" data-caption="Before we knew how much these little days would mean." />
+                <figcaption>
+                  <span class="gallery-title">PHOTO 1</span>
+                  <small>The Little Girl from 2006</small>
+                  <em>Before we knew how much these little days would mean.</em>
+                </figcaption>
+              </figure>
+
+              <figure class="gallery-card" data-title="Growing Up" data-caption="Years passed, but the memories stayed close.">
+                <img src="assets/photos/photo-2.jpg" alt="Growing Up" class="gallery-image" data-title="Growing Up" data-caption="Years passed, but the memories stayed close." />
+                <figcaption>
+                  <span class="gallery-title">PHOTO 2</span>
+                  <small>Growing Up</small>
+                  <em>Years passed, but the memories stayed close.</em>
+                </figcaption>
+              </figure>
+
+              <figure class="gallery-card" data-title="Her Beautiful Smile" data-caption="A smile that makes an ordinary day feel lighter.">
+                <img src="assets/photos/photo-3.jpg" alt="Her Beautiful Smile" class="gallery-image" data-title="Her Beautiful Smile" data-caption="A smile that makes an ordinary day feel lighter." />
+                <figcaption>
+                  <span class="gallery-title">PHOTO 3</span>
+                  <small>Her Beautiful Smile</small>
+                  <em>A smile that makes an ordinary day feel lighter.</em>
+                </figcaption>
+              </figure>
+
+              <figure class="gallery-card" data-title="The Person You've Become" data-caption="Look at you, growing into your own kind of beautiful.">
+                <img src="assets/photos/photo-4.jpg" alt="The Person You've Become" class="gallery-image" data-title="The Person You've Become" data-caption="Look at you, growing into your own kind of beautiful." />
+                <figcaption>
+                  <span class="gallery-title">PHOTO 4</span>
+                  <small>The Person You've Become</small>
+                  <em>Look at you, growing into your own kind of beautiful.</em>
+                </figcaption>
+              </figure>
+
+              <figure class="gallery-card" data-title="Another Year, Another Chapter" data-caption="May life surprise you with beautiful things.">
+                <img src="assets/photos/photo-5.jpg" alt="Another Year, Another Chapter" class="gallery-image" data-title="Another Year, Another Chapter" data-caption="May life surprise you with beautiful things." />
+                <figcaption>
+                  <span class="gallery-title">PHOTO 5</span>
+                  <small>Another Year, Another Chapter</small>
+                  <em>May life surprise you with beautiful things.</em>
+                </figcaption>
+              </figure>
+
+              <figure class="gallery-card gallery-card--natural" data-title="A Little Lost in the Rain" data-caption="Some moments don't need a perfect pose—just a little rain, a quiet smile, and a moment that feels like your own.">
+                <img src="assets/photos/photo-6.jpg" alt="Harika sitting beside a car in the rain, wearing a cream outfit with an orange dupatta" class="gallery-image" data-title="A Little Lost in the Rain" data-caption="Some moments don't need a perfect pose—just a little rain, a quiet smile, and a moment that feels like your own." />
+                <figcaption>
+                  <span class="gallery-title">A MOMENT OF MAGIC</span>
+                  <small>A Little Lost in the Rain</small>
+                  <em>Some moments don't need a perfect pose—just a little rain, a quiet smile, and a moment that feels like your own.</em>
+                </figcaption>
+              </figure>
+
+              <figure class="gallery-card gallery-card--natural" data-title="Elegance, the Harika Way" data-caption="Some people don't need to try too hard to stand out. They simply show up as themselves, and that's what makes them unforgettable.">
+                <img src="assets/photos/photo-7.jpg" alt="Harika in a purple traditional outfit seated before a carved wooden doorway" class="gallery-image" data-title="Elegance, the Harika Way" data-caption="Some people don't need to try too hard to stand out. They simply show up as themselves, and that's what makes them unforgettable." />
+                <figcaption>
+                  <span class="gallery-title">A LITTLE TIMELESS ELEGANCE</span>
+                  <small>Elegance, the Harika Way</small>
+                  <em>Some people don't need to try too hard to stand out. They simply show up as themselves, and that's what makes them unforgettable.</em>
+                </figcaption>
+              </figure>
+            </div>
+          </section>
+
+          <section class="memory-section section container" id="memories">
+            <div class="section-heading centered">
+              <p class="eyebrow">WHERE IT ALL BEGAN</p>
+              <h2>The Primary School Days</h2>
+              <p class="subtitle">Some of our oldest memories deserve their own little place.</p>
+            </div>
+
+            <div class="school-sticker-wrap">
+              <svg class="school-sticker" viewBox="0 0 360 250" role="img" aria-labelledby="school-sticker-title school-sticker-description">
+                <title id="school-sticker-title">Childhood friends walking to school</title>
+                <desc id="school-sticker-description">A little boy and girl, seen from behind, hold hands as they walk together with school bags.</desc>
+                <ellipse cx="180" cy="219" rx="116" ry="13" fill="#4a3a35" opacity=".12" />
+                <path d="M40 210c24-11 43-8 63-1m160 0c22-10 39-8 57 0" fill="none" stroke="#b1b58a" stroke-width="4" stroke-linecap="round" opacity=".72" />
+                <path d="M96 206c8-9 18-12 29-11m110 0c11-2 21 2 29 10" fill="none" stroke="#d7c79e" stroke-width="3" stroke-linecap="round" />
+                <path d="M164 119c5 8 10 18 14 32m18-32c-5 8-10 18-14 32" fill="none" stroke="#9a644d" stroke-width="15" stroke-linecap="round" />
+                <path d="M164 119c5 8 10 18 14 32m18-32c-5 8-10 18-14 32" fill="none" stroke="#e6b69a" stroke-width="9" stroke-linecap="round" />
+                <path d="M175 151c2-5 7-6 10-3l5 4-5 7c-4 3-9 0-10-4z" fill="#d99a7d" stroke="#fffaf0" stroke-width="3" stroke-linejoin="round" />
+                <path d="M139 176l-2 25m83-25 2 25" fill="none" stroke="#d19a78" stroke-width="12" stroke-linecap="round" />
+                <path d="M127 203c1-7 6-10 13-9l8 3c4 2 5 8 2 11h-19c-4 0-6-2-4-5zm83 0c-1-7-6-10-13-9l-8 3c-4 2-5 8-2 11h19c4 0 6-2 4-5z" fill="#8d6558" stroke="#fffaf0" stroke-width="3" stroke-linejoin="round" />
+                <path d="M138 105c-2 24-6 41-13 57 12 12 26 16 42 15 8-17 9-40 5-68z" fill="#94aec0" stroke="#fffaf0" stroke-width="5" stroke-linejoin="round" />
+                <path d="M188 109c-3 24-2 47 5 68 16 1 30-4 41-16-7-16-11-34-12-56z" fill="#d58d9c" stroke="#fffaf0" stroke-width="5" stroke-linejoin="round" />
+                <path d="M143 125c11 7 22 10 34 10l-7 34c-13 3-24 1-34-6zm69 1c-10 7-22 10-34 10l8 34c13 2 24 0 34-7z" fill="#f6ead4" opacity=".96" />
+                <path d="M143 126l13 7-8 40m60-46-13 7 8 40" fill="none" stroke="#fffaf0" stroke-width="3" stroke-linecap="round" />
+                <path d="M129 114c-6 4-11 12-13 25l10 16 17-8 1-29z" fill="#c88757" stroke="#fffaf0" stroke-width="4" stroke-linejoin="round" />
+                <path d="M125 128l14 5m-17 5 15 5m-21-2-4 10 13 9 11-12" fill="none" stroke="#754e42" stroke-width="3" stroke-linecap="round" />
+                <path d="M231 115c7 4 12 12 14 25l-10 16-17-8-1-29z" fill="#c98c76" stroke="#fffaf0" stroke-width="4" stroke-linejoin="round" />
+                <path d="M235 128l-14 5m17 5-15 5m21-2 4 10-13 9-11-12" fill="none" stroke="#79564c" stroke-width="3" stroke-linecap="round" />
+                <path d="M130 108c-1-12 5-21 16-21s18 9 17 21l-2 8c-3 9-8 13-15 13s-12-4-15-13z" fill="#b87957" stroke="#fffaf0" stroke-width="5" />
+                <path d="M128 106c0-16 7-25 18-25 12 0 20 10 19 25-7-2-12-8-15-16-4 9-11 14-22 16zm1 6c-5 7-5 16 0 22m33-22c5 7 5 16 0 22" fill="#342820" stroke="#fffaf0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M202 108c-1-12 5-21 16-21s18 9 17 21l-2 8c-3 9-8 13-15 13s-12-4-15-13z" fill="#b87957" stroke="#fffaf0" stroke-width="5" />
+                <path d="M200 105c1-16 8-24 19-24 12 0 18 9 18 25-10-3-16-9-19-16-3 7-9 12-18 15z" fill="#342820" stroke="#fffaf0" stroke-width="5" stroke-linejoin="round" />
+                <path d="M117 128c-3-8-2-17 4-23m122 23c3-8 2-17-4-23" fill="none" stroke="#49332c" stroke-width="6" stroke-linecap="round" />
+                <path d="M170 142l10 6 10-6" fill="none" stroke="#fffaf0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9" />
+                <path d="M72 74l4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1z" fill="#e7bd69" stroke="#fffaf0" stroke-width="3" stroke-linejoin="round" />
+                <path d="M280 65l3 7 8 1-6 5 2 8-7-4-7 4 2-8-6-5 8-1z" fill="#d997a5" stroke="#fffaf0" stroke-width="3" stroke-linejoin="round" />
+                <path d="M93 49c4-7 14-4 13 3-1 5-9 9-9 9s-8-5-8-10c0-4 2-5 4-2zm174 3c4-7 14-4 13 3-1 5-9 9-9 9s-8-5-8-10c0-4 2-5 4-2z" fill="#de9cac" stroke="#fffaf0" stroke-width="3" stroke-linejoin="round" />
+              </svg>
+            </div>
+
+            <div class="school-letter-divider" aria-hidden="true"><span>✦</span><i></i><span>♥</span><i></i><span>✦</span></div>
+
+            <article class="school-letter-card">
+              <p class="school-letter-kicker">A LITTLE NOTE, KEPT CLOSE</p>
+              <h3>A Note From Our Early Years</h3>
+              <div class="school-letter-copy">
+                <p>Dear Harika,</p>
+                <p>Sometimes, I think about how we started—as two little kids in primary school who had no idea how many years of memories lay ahead of us.</p>
+                <p>Back then, life was so simple. We didn't need big plans or special occasions to be happy. The smallest things could make an ordinary day unforgettable. We were just kids, growing up one school day at a time, without realizing that those little moments would become memories we'd carry with us for years.</p>
+                <p>If I could go back to one day from our primary school days, I honestly would. Not to change anything, but just to experience that little world once again. To see those younger versions of us, to laugh at the silly things we probably don't even remember properly anymore, and to enjoy a time when growing up felt so far away.</p>
+                <p>It's funny how time works. Back then, we were probably waiting to grow up, and now, a part of me wishes we could pause the clock for a little while. We didn't know how quickly everything would change, how much we'd grow, or how different life would look years later.</p>
+                <p>But one thing I love about childhood memories is that they don't really disappear. A familiar place, an old school memory, or even a random little thing can suddenly take you back. And for a moment, you're that kid again, living a day you didn't know you'd someday miss.</p>
+                <p>I'm glad our story began when it did. Not everyone gets to look back and remember someone who has been part of their story since they were little.</p>
+                <p>We've grown up, and there's still so much life waiting for us. But somewhere in all these years, those primary school days have kept their own special place.</p>
+                <p>So here's to the little kids we used to be, the memories that made those days special, and all the beautiful moments we haven't experienced yet.</p>
+                <p>If time ever gave us just one day back, I think I'd spend it smiling at how little we were and how much life was still waiting for us.</p>
+                <p class="school-letter-birthday">Happy Birthday, Harika!</p>
+                <p>I hope the girl you were back then would look at the person you've become today and smile proudly.</p>
+              </div>
+              <p class="school-letter-signoff">From your childhood partner-in-crime,<br />Always cheering for you.</p>
+              <p class="school-letter-footer">Your childhood partner-in-crime ❤️</p>
+            </article>
+          </section>
+
+          <section class="letter-section section" id="letter">
+            <div class="letter-shell container">
+              <div class="envelope-wrap">
+                <div class="envelope" aria-label="Birthday letter envelope">
+                  <div class="envelope-front"></div>
+                  <div class="letter-card">
+                    <p>For my childhood best friend</p>
+                    <h3>Love, laughter, and forever memories</h3>
+                    <button class="open-letter-btn" type="button">Open Your Birthday Letter</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer class="finale section">
+          <div class="container finale-content">
+            <p class="finale-quote">"Some people become part of our story so early that they remain in our memories forever."</p>
+            <p class="finale-subtext">Here's to more laughs, more memories, and many more birthdays, Sunshine! ☀️❤️</p>
+            <p class="finale-signature">— Chakri ♡</p>
+            <button class="replay-btn" type="button">Replay the Surprise</button>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <div class="lightbox-panel" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
+        <button class="lightbox-close" type="button" aria-label="Close gallery image">×</button>
+        <div class="lightbox-media">
+          <img id="lightbox-image" src="" alt="Expanded gallery image" />
+        </div>
+        <div class="lightbox-meta">
+          <h3 id="lightbox-title">Gallery title</h3>
+          <p id="lightbox-caption">Gallery caption</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="letter-modal" id="letter-modal" aria-hidden="true">
+      <div class="letter-modal-inner">
+        <div class="letter-letter" role="dialog" aria-modal="true" aria-label="Birthday letter">
+          <img class="birthday-letter-image" src="assets/photos/birthday-letter.png" alt="Handwritten birthday letter for Harika" />
+          <button class="close-letter-btn" type="button">Close Letter</button>
+        </div>
+      </div>
+      <div class="heart-layer" aria-hidden="true"></div>
+    </div>
+
+    <button class="music-toggle" type="button" aria-label="Play or pause background music">
+      <i class="fa-solid fa-music"></i>
+      <span>Music</span>
+    </button>
+
+    <audio id="background-audio" loop preload="none">
+      <source src="assets/music/background-music%20.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <script src="script.js"></script>
+  </body>
+</html>
